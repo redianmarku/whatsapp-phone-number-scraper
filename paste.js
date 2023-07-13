@@ -1,4 +1,4 @@
-const elementsToScrape = document.querySelectorAll(".f7PuF");
+const elementsToScrape = document.querySelectorAll("._2h0YP");
 const scrapedData = [];
 
 elementsToScrape.forEach((element) => {
