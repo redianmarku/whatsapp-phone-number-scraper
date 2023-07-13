@@ -15,4 +15,4 @@ In the txt file you will find all the phone numbers of the group in a list insid
 
 ### 👇 If you face problem in running the script you can check my youtube video.
 
-https://youtu.be/xxxxxx
+[YouTube Video](https://www.youtube.com/watch?v=ErOdVTrH3Bc)
