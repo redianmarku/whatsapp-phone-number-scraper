@@ -1,18 +1,21 @@
 # 🤙Whatsapp Phone Number Scrapper
 
-This is a scrip that you can paste in the web.whatsapp.com and can scrape all the phone numbers of members in any whatsapp group.
+This Python script utilizes Selenium and Openpyxl to scrape phone numbers from a WhatsApp group. Before running the script, make sure you have the necessary libraries installed:
+pip install selenium openpyxl
 
-## ℹ️ How to use
 
-1. Open web.whatsapp.com and open the group info that you want to scrape.
-2. Open all members of the group list and scroll in the end.
-3. Press `F12` or `Ctrl-Shift-I`(Windows) / `Cmd-Shift-I`(Mac) to open the browser console
-4. Open the paste.js file from this repository and copy all the code.
-5. Paste this whole code in the Console tab inside inspect and press `ENTER` key.
-6. Maybe chrome will ask if you want to allow website to download files, as soon as you accept it will be downloaded a txt file.
+## ℹ️ Instructions
 
-In the txt file you will find all the phone numbers of the group in a list inside the file.
+1. Run the script with Python: python  main.py 
+2. the browser will Open web.whatsapp.com scan the qr code and open the group info that you want to scrape.
+3. Open all members of the group list and scroll in the end.
+4. press enter in the terminal
 
-### 👇 If you face problem in running the script you can check my youtube video.
 
-[YouTube Video](https://www.youtube.com/watch?v=ErOdVTrH3Bc)
+
+### 👇 
+Output
+The script will create an Excel workbook named member_info.xlsx on the desktop with the extracted phone numbers.
+
+Disclaimer
+Please use this script responsibly and ensure compliance with WhatsApp's terms of service. Scraping information without permission may violate privacy and terms of use agreements. The developers are not responsible for any misuse of this script.
