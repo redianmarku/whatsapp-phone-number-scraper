@@ -1,15 +1,18 @@
 import re
-
+import logging
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from openpyxl import Workbook
-import logging
+
+# Constants
+LOG_FILE = 'whatsapp_scraper.log'
+EXCEL_FILE = 'member_info.xlsx'
 
 # Set up logging
-logging.basicConfig(filename='whatsapp_scraper.log', level=logging.INFO)
+logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 
 
 def display_welcome_message():
@@ -80,9 +83,10 @@ def export(phone_numbers):
             worksheet.cell(row=i, column=1, value=phone_number)
 
         # Save the workbook
-        workbook.save('member_info.xlsx')
+        workbook.save(EXCEL_FILE)
 
-        print("Phone numbers have been successfully exported to 'member_info.xlsx'")
+        print(
+            f"Phone numbers have been successfully exported to '{EXCEL_FILE}'")
     except Exception as e:
         logging.error(f'Error during export: {e}')
         print("An error occurred during export. Please check logs for details.")
@@ -98,9 +102,14 @@ def main():
                 phone_numbers = extract_phone_numbers(page_content)
                 if phone_numbers:
                     export(phone_numbers)
+    except KeyboardInterrupt:
+        print("\nScript interrupted by user.")
     except Exception as e:
         logging.error(f'Unexpected error: {e}')
         print("An unexpected error occurred. Please check logs for details.")
+    finally:
+        if driver:
+            driver.quit()
 
 
 if __name__ == "__main__":
