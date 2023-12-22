@@ -18,6 +18,7 @@ logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 def display_welcome_message():
     print("Welcome to the WhatsApp Phone Number Scraper!")
     print("Please scan the QR code and log in to WhatsApp on the opened browser.")
+    print("Please navigate to the group and open info and clicke more to show all members.")
     input('Press Enter when you are ready to proceed.')
 
 
