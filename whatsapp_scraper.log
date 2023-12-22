@@ -1,0 +1,24 @@
+ERROR:root:Error connecting to the existing session: Message: unknown error: cannot connect to chrome at localhost:9222
+from chrome not reachable
+Stacktrace:
+	GetHandleVerifier [0x00007FF714712142+3514994]
+	(No symbol) [0x00007FF714330CE2]
+	(No symbol) [0x00007FF7141D74C3]
+	(No symbol) [0x00007FF7141C3EA0]
+	(No symbol) [0x00007FF7142109D4]
+	(No symbol) [0x00007FF7142079B1]
+	(No symbol) [0x00007FF714250AB4]
+	(No symbol) [0x00007FF714245D93]
+	(No symbol) [0x00007FF714214BDC]
+	(No symbol) [0x00007FF714215C64]
+	GetHandleVerifier [0x00007FF71473E16B+3695259]
+	GetHandleVerifier [0x00007FF714796737+4057191]
+	GetHandleVerifier [0x00007FF71478E4E3+4023827]
+	GetHandleVerifier [0x00007FF7144604F9+689705]
+	(No symbol) [0x00007FF71433C048]
+	(No symbol) [0x00007FF714338044]
+	(No symbol) [0x00007FF7143381C9]
+	(No symbol) [0x00007FF7143288C4]
+	BaseThreadInitThunk [0x00007FFD2CB4C7E7+23]
+	RtlUserThreadStart [0x00007FFD2D26C7C0+32]
+
