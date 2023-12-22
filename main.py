@@ -1,3 +1,5 @@
+import re
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -37,24 +39,33 @@ def login(driver):
         print("An error occurred during login. Please check logs for details.")
 
 
-def scrape(driver):
+def scrape_all_content(driver):
     try:
-        # Wait for the group chat to load and find the member elements
-        member_elements = WebDriverWait(driver, 10).until(
-            EC.presence_of_all_elements_located(
-                (By.CSS_SELECTOR, '._2h0YP'))
+        # Wait for the page to load completely
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'body'))
         )
 
-        # Extract the phone numbers from the member elements
-        phone_numbers = [element.text for element in member_elements]
+        # Get all page content
+        page_content = driver.find_element(By.CSS_SELECTOR, 'body').text
 
-        # Close the Selenium driver
-        driver.quit()
-
-        return phone_numbers
+        return page_content
     except Exception as e:
         logging.error(f'Error during scraping: {e}')
         print("An error occurred during scraping. Please check logs for details.")
+        return None
+
+
+def extract_phone_numbers(page_content):
+    try:
+        # Use regex to extract phone numbers
+        phone_numbers = re.findall(
+            r'\+\d{1,3}\s\d{1,4}\s\d{1,4}\s\d{1,}', page_content)
+
+        return phone_numbers
+    except Exception as e:
+        logging.error(f'Error during phone number extraction: {e}')
+        print("An error occurred during phone number extraction. Please check logs for details.")
         return None
 
 
@@ -69,8 +80,7 @@ def export(phone_numbers):
             worksheet.cell(row=i, column=1, value=phone_number)
 
         # Save the workbook
-        workbook.save(
-            'I:\\original\\Coding\\whatsapp-phone-number-scraper\\member_info.xlsx')
+        workbook.save('member_info.xlsx')
 
         print("Phone numbers have been successfully exported to 'member_info.xlsx'")
     except Exception as e:
@@ -83,9 +93,11 @@ def main():
         driver = initialize_driver()
         if driver:
             login(driver)
-            phone_numbers = scrape(driver)
-            if phone_numbers:
-                export(phone_numbers)
+            page_content = scrape_all_content(driver)
+            if page_content:
+                phone_numbers = extract_phone_numbers(page_content)
+                if phone_numbers:
+                    export(phone_numbers)
     except Exception as e:
         logging.error(f'Unexpected error: {e}')
         print("An unexpected error occurred. Please check logs for details.")
