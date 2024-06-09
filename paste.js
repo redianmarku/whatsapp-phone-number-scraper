@@ -1,4 +1,4 @@
-const elementsToScrape = document.querySelectorAll("._2h0YP");
+const elementsToScrape = document.querySelectorAll("[tabindex='-1'] div");
 const scrapedData = [];
 
 elementsToScrape.forEach((element) => {
