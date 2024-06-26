@@ -1,4 +1,4 @@
-const elementsToScrape = document.querySelectorAll("._2h0YP");
+const elementsToScrape = document.querySelectorAll("._ao3e");
 const scrapedData = [];
 const fileName = Date.now().toString()
 
