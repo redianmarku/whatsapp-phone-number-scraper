@@ -1,8 +1,10 @@
-const elementsToScrape = document.querySelectorAll("._2h0YP");
+const elementsToScrape = document.querySelectorAll("._ao3e");
 const scrapedData = [];
+const fileName = Date.now().toString()
 
 elementsToScrape.forEach((element) => {
   const data = element.textContent.trim();
+  if(data.startsWith('+55')) // change for your DDI
   scrapedData.push(data);
 });
 
@@ -14,7 +16,7 @@ const url = URL.createObjectURL(blob);
 
 const link = document.createElement("a");
 link.href = url;
-link.download = "scraped_numbers.txt";
+link.download = `${fileName}.txt`;
 link.style.display = "none";
 
 document.body.appendChild(link);
